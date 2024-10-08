@@ -8,7 +8,6 @@ stage('Cloning Git')
     checkout scm
 }
 
-def app
 stage('Build-and-Tag')
 {
     /* This builds the actual image;
@@ -16,13 +15,11 @@ stage('Build-and-Tag')
     app.docker.build('blakemfordham/car_docker_repo')    
 }
 
-def app
 stage('Push-to-Dockerhub')
 {
     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credentials')    
 }
 
-def app
 stage('Deploy')
 {
     sh 'docker-compose down'
