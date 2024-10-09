@@ -17,7 +17,10 @@ stage('Build-and-Tag')
 
 stage('Push-to-Dockerhub')
 {
-    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credentials')    
+    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credentials')
+    {
+        app.push('latest')
+    }    
 }
 
 stage('Deploy')
